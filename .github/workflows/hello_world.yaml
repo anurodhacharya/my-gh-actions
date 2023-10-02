@@ -1,0 +1,24 @@
+name: hello world workflow #Name of the workflow
+
+on: # We are going to specify the events that this workflow is triggered on.
+  push:
+    branches: # Whenever we push to the following branches, this workflow will be triggered.
+      - main
+  workflow_dispatch:
+    
+jobs:
+  hello:  # name of first job
+    runs-on: ubuntu-latest  # specifying which runner we want to use
+    steps:  # writing different steps that belong to this job
+      - uses: actions/checkout@v2
+      - name: hello-world         # This is another step
+        run: echo "Hello world" # We are running the shell command which we specify below
+        shell: bash
+  
+  goodbye: # name of second job
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye world
+        run:  echo "Goodbye world"
+        shell: bash
+
